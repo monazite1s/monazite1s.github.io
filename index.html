@@ -1,13 +1,686 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/animal.css">
+    <title>Animal</title>
+    <link rel="stylesheet" href="">
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    overflow: visible;
+    white-space: nowrap;
+}
+
+a {
+    display: block;
+    text-decoration: none;
+}
+
+@font-face {
+    font-family: 'iconfont';
+    src: url('font/iconfont.woff2?t=1671020252452') format('woff2'),
+        url('font/iconfont.woff?t=1671020252452') format('woff'),
+        url('font/iconfont.ttf?t=1671020252452') format('truetype');
+}
+
+.iconfont {
+    font-family: "iconfont" !important;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.page {
+    margin: 0 auto;
+    width: auto;
+    background: #f8f8f8;
+}
+
+.menu {
+    background-color: #fff;
+    height: 49px;
+}
+
+.menu .camera {
+    position: relative;
+    margin: 0 auto;
+    width: 200px;
+    height: 200px;
+    background-color: #81c04b;
+    z-index: 1;
+    transition: 1s;
+}
+
+.menu .camera:hover {
+    transform: scale(0.9, 0.9);
+}
+
+.menu .camera .circle {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 10px;
+    width: 164px;
+    height: 164px;
+    border: 4px solid white;
+    border-radius: 50% 50%;
+}
+
+.menu .icon1 {
+    position: absolute;
+    top: 15px;
+    right: 26px;
+    font-size: 22px;
+    color: black;
+    transition: 1s;
+}
+
+.menu .icon2 {
+    position: absolute;
+    top: 15px;
+    left: 26px;
+    font-size: 22px;
+    color: black;
+    transition: 1s;
+}
+
+.menu .icon1:hover {
+    transform: scale(0.7, 0.7);
+}
+
+.menu .icon2:hover {
+    transform: scale(0.7, 0.7);
+}
+
+.menu .camera .icon3 {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    line-height: 200px;
+    font-size: 114px;
+    color: white;
+}
+
+.header {
+    position: relative;
+    height: 1478px;
+    text-align: center;
+    color: #2a3f17;
+}
+
+.header .bg {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 100%;
+    transform: translateX(-50%);
+    height: 880px;
+    background: url("https://typora-image-mrz.oss-cn-beijing.aliyuncs.com/%E4%B9%8C%E9%BE%9F.png") no-repeat;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+}
+
+.header .title {
+    position: absolute;
+    top: 242px;
+    left: 50%;
+    min-width: 700px;
+    transform: translateX(-50%);
+    font-family: Cambria;
+    font-size: 72px;
+    font-weight: 100;
+}
+
+.header .para {
+    position: absolute;
+    top: 345px;
+    left: 50%;
+    min-width: 900px;
+    transform: translateX(-50%);
+    text-align: left;
+    font-size: 30px;
+}
+
+.header .btn {
+    position: absolute;
+    top: 556px;
+    left: 50%;
+    transform: translateX(-200%);
+    width: 262px;
+    height: 72px;
+    background-color: #2a3f17;
+    color: white;
+}
+
+.header .btn .btnText {
+    height: 72px;
+    font-size: 30px;
+    text-align: center;
+    line-height: 72px;
+    color: white;
+}
+
+.header .displayer {
+    position: absolute;
+    bottom: 246px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1111px;
+    height: 498px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header .displayer .show {
+    position: relative;
+    width: 332px;
+    height: 498px;
+    transition: 1s;
+}
+
+.header .displayer .show:hover {
+    transform: translateY(-50px)
+}
+
+.header .displayer .show .lab {
+    position: absolute;
+    bottom: 98px;
+    right: 70px;
+    font-size: 48px;
+    color: white;
+}
+
+.selectionOne {
+    position: relative;
+    height: 760px;
+}
+
+.selectionOne .bgOne {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 760px;
+    background: url("https://typora-image-mrz.oss-cn-beijing.aliyuncs.com/%E9%B9%BF.png") no-repeat;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+}
+
+.selectionOne .msg {
+    position: absolute;
+    top: -83px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 946px;
+    height: 541px;
+    background-color: #e0dfdf;
+    transition: top 1s;
+}
+
+.selectionOne .msg:hover {
+    top: -133px;
+}
+
+.selectionOne .msg .introduce {
+    position: absolute;
+    top: 79px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 20px;
+    color: #2a3f17;
+}
+
+.selectionOne .msg .sign {
+    position: absolute;
+    bottom: 63px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 197px;
+    height: 70px;
+    background-color: #2a3f17;
+    color: white;
+    text-align: center;
+    line-height: 70px;
+    font-size: 30px;
+    transition: width 1s, height 1s, line-height 1s;
+}
+
+.selectionOne .msg .sign:hover {
+    width: 177px;
+    height: 60px;
+    line-height: 60px;
+}
+
+.selectionOne .msg .sign .signLink {
+    position: absolute;
+    top: 0;
+    width: 197px;
+    height: 70px;
+}
+
+.selectionTwo {
+    position: relative;
+    height: 846px;
+}
+
+.selectionTwo .bannerTitle {
+    position: absolute;
+    top: 81px;
+    left: 50%;
+    width: 240px;
+    height: 63px;
+    transform: translateX(-50%);
+    font-size: 48px;
+    color: #2a3f17;
+    transition: border-top 1s;
+}
+
+.bannerTitle::before,
+.bannerTitle::after {
+    box-sizing: inherit;
+    position: absolute;
+    content: '';
+    border: 2px solid transparent;
+    width: 0;
+    height: 0;
+}
+
+.bannerTitle::after {
+    bottom: 0;
+    right: 0;
+}
+
+.bannerTitle::before {
+    top: 0;
+    left: 0;
+}
+
+.bannerTitle:hover::before,
+.bannerTitle:hover::after {
+    width: 234px;
+    height: 57px;
+}
+
+.bannerTitle:hover::before {
+    border-top: 4px solid #2a3f17;
+    border-right: 4px solid #2a3f17;
+    transition: width 0.3s ease-out, height 0.3s ease-out 0.3s;
+}
+
+.bannerTitle:hover::after {
+    border-bottom: 4px solid #2a3f17;
+    border-left: 4px solid #2a3f17;
+    transition: border-color 0s ease-out 0.6s, width 0.3s ease-out 0.6s, height 0.3s ease-out 1s;
+}
+
+.selectionTwo .banner {
+    position: absolute;
+    top: 160px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1148px;
+    height: 414px;
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+}
+
+.selectionTwo .banner .animal {
+    position: relative;
+    top: 0;
+    width: 264px;
+    height: 414px;
+    background-color: #e0dfdf;
+    transition: top 1s;
+}
+
+.selectionTwo .banner .animal:hover {
+    top: -25px;
+}
+
+.selectionTwo .banner .animal .name {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 96px;
+    text-align: center;
+    font-size: 30px;
+    color: #2a3f17
+}
+
+.selectionTwo .banner .animal .link {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 48px;
+    font-size: 22px;
+    border-bottom: 2px solid #2a3f17;
+    color: #2a3f17;
+}
+
+.selectionTwo .banner .animal .pic {
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    width: 261px;
+    height: 259px;
+}
+
+.selectionTwo .button {
+    position: absolute;
+    bottom: 86px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 359px;
+    height: 69px;
+    background-color: #f8f8f8;
+    border: 2px solid #2a3f17;
+}
+
+.selectionTwo .button .buttonTxt {
+    height: 72px;
+    font-size: 30px;
+    text-align: center;
+    line-height: 72px;
+    color: #2a3f17;
+    transition: background-color 1s, color 1s;
+}
+
+.selectionTwo .buttonTxt:hover {
+    background-color: #2a3f17;
+    color: #fff;
+}
+
+.selectionThr {
+    position: relative;
+    height: 1081px;
+}
+
+.selectionThr .container {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1480px;
+    height: 1020px;
+    color: #2a3f17
+}
+
+.selectionThr .container .picture {
+    position: absolute;
+    width: 700px;
+    height: 1020px;
+}
+
+.selectionThr .container .text {
+    position: relative;
+    left: 700px;
+    width: 600px;
+    height: 1020px;
+    text-align: left;
+}
+
+.selectionThr .container .text .title {
+    position: absolute;
+    top: 70px;
+    left: 130px;
+    height: 300px;
+    font-size: 36px;
+    transition: 1s;
+}
+
+.selectionThr .container .text .title:hover {
+    top: 0;
+}
+
+.selectionThr .container .text .box {
+    position: relative;
+    top: 162px;
+    left: 130px;
+}
+
+.selectionThr .container .text .para {
+    text-align: left;
+    font-size: 24px;
+    display: block;
+    transition: 0.5s;
+}
+
+.selectionThr .container .text .para:hover {
+    margin-left: 30px;
+    font-size: 30px;
+}
+
+.selectionThr .container .text .order {
+    width: 600px;
+    height: 532px;
+    font-size: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.selectionThr .container .text .order .num {
+    font-weight: lighter;
+    font-size: 70px;
+}
+
+.selectionThr .container .text .order .point {
+    transition: 1s;
+}
+
+.selectionThr .container .text .order .point:hover {
+    margin-left: 50px;
+}
+
+.footer {
+    position: relative;
+    background-color: #fff;
+    height: 460px;
+    border-top: 2px solid #000000;
+}
+
+.footer .footerBox {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 460px;
+    min-width: 1600px;
+    top: 0;
+}
+
+.footer .footerBox .text1 {
+    position: absolute;
+    top: 163px;
+    left: 275px;
+    font-size: 40px;
+    color: #2a3f17;
+}
+
+.footer .footerBox .text2 {
+    position: absolute;
+    left: 275px;
+    bottom: 163px;
+    font-size: 40px;
+    color: #2a3f17;
+}
+
+.footer .footerBox .text3 {
+    position: absolute;
+    top: 180px;
+    left: 50%;
+    transform: translateX(-200%);
+    font-size: 30px;
+    color: #949f8b;
+}
+
+.footer .footerBox .text4 {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-115%);
+    bottom: 208px;
+    font-size: 24px;
+    color: #949f8b;
+}
+
+.footer .footerBox .text5 {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-113%);
+    bottom: 168px;
+    font-size: 24px;
+    color: #949f8b;
+}
+
+.footer .footerBox .button {
+    position: absolute;
+    right: 225px;
+    bottom: 163px;
+    width: 361px;
+    height: 73px;
+    background-color: #949f8b;
+    font-size: 36px;
+    line-height: 73px;
+    text-align: center;
+    color: white;
+    transition: 1s;
+}
+
+.footer .footerBox .button:hover {
+    top: 50%;
+    transform: translateY(-50%);
+    color: #949f8b;
+    background-color: white;
+}
+    </style>
 </head>
 
-<body>
-    <div id="test">
-        Hello world. <br />This is my first website.
+<body class="page">
+    <div class="menu">
+        <a href=""><span class="iconfont icon1">&#xe633;</span></a>
+        <a href=""><span class="iconfont icon2">&#xe600;</span></a>
+        <div class="camera">
+            <div class="circle"></div>
+            <span class="iconfont icon3">&#xe60b;</span>
+        </div>
+    </div>
+    <div class="header">
+        <div class="bg"></div>
+        <h1 class="title">Animal Photography</h1>
+        <div>
+            <p class="para">A silhouette of them , a simple little acttion , here are the photographer ’s<br />
+                eyes the best of them, their laughter, their love, their every vivid, are recored<br />
+                by us.</p>
+        </div>
+        <div class="btn">
+            <a href="" class="btnText">EXPLORE</a>
+        </div>
+        <div class="displayer">
+            <div class="show">
+                <img src="https://typora-image-mrz.oss-cn-beijing.aliyuncs.com/%E7%81%AB%E7%83%88%E9%B8%9F1.png" alt="">
+                <p class="lab">Fly</p>
+            </div>
+            <div class="show">
+                <img src="https://typora-image-mrz.oss-cn-beijing.aliyuncs.com/%E7%81%AB%E7%83%88%E9%B8%9F2.png" alt="">
+                <p class="lab">Love</p>
+            </div>
+            <div class="show">
+                <img src="https://typora-image-mrz.oss-cn-beijing.aliyuncs.com/%E7%81%AB%E7%83%88%E9%B8%9F3.png" alt="">
+                <p class="lab">Stand</p>
+            </div>
+        </div>
+    </div>
+    <div class="selectionOne">
+        <div class="bgOne"></div>
+        <div class="msg">
+            <p class="introduce">
+                “Family Farms is the best place,where I can buy fruit,vegetable,meat,honey,milk,<br />
+                eggs and so on for my retaurant directly fromupplier. Super convinient.Thank you”<br />
+                xdccnfc cfvfesc cfnccnjdcn cfjdcdsr dcwwzwqg ejs dddc ddf fnfjv eij fvnv jnxzexh cn<br />
+                cdcmdsc ddnc, cddmdcds dncdn cdcn wqeoeas, dcndassasas,cdcndcnc cciqoskxm<br />
+                cbdcpqslwq nfnere nfncsfjjc dndcww frhfjnc qpdjweiw cnncqe, cqjsdc ccn dcjndc ,<br />
+                ncf cdncjd dcdjcndq csjncq dcdncf dcdjdnc cdjsq, qkodkqe wqcnpsdc cdnqq qcw,<br />
+                cqnonxj dcdcnd dcnjsdvb wcnwq cowwncjq jjcnjncqnw wcq c wd cwch, cnjncnc ece<br />
+                cdcnncdwnc nenwc dcnnc cjcj , c cjrnc wecwc .<br />
+            </p>
+            <div class="sign">
+                SIGN UP
+                <a href="" class="signLink"></a>
+            </div>
+        </div>
+    </div>
+    <div class="selectionTwo">
+        <div class="bannerTitle">
+            <div class="borderTR"></div>
+            <div class="borderBL"></div>
+            <p class="abc">Difference</p>
+        </div>
+        <div class="banner">
+            <div class="animal">
+                <img src="https://typora-image-mrz.oss-cn-beijing.aliyuncs.com/%E9%A9%AC.png" alt="" class="pic">
+                <p class="name">Horse</p>
+                <a href="" class="link">A difference story</a>
+            </div>
+            <div class="animal">
+                <img src="https://typora-image-mrz.oss-cn-beijing.aliyuncs.com/%E8%A2%8B%E9%BC%A0.png" alt=""
+                    class="pic">
+                <div class="name">Kangaroo</div>
+                <a href="" class="link">A difference story</a>
+            </div>
+            <div class="animal">
+                <img src="https://typora-image-mrz.oss-cn-beijing.aliyuncs.com/%E7%8B%AE%E5%AD%90.png" alt=""
+                    class="pic">
+                <div class="name">Lion</div>
+                <a href="" class="link">A difference story</a>
+            </div>
+            <div class="animal">
+                <img src="https://typora-image-mrz.oss-cn-beijing.aliyuncs.com/%E5%B0%8F%E9%B8%9F.png" alt=""
+                    class="pic">
+                <div class="name">Hummingbird</div>
+                <a href="" class="link">A difference story</a>
+            </div>
+        </div>
+        <div class="button">
+            <a href="" class="buttonTxt">Know more</a>
+        </div>
+    </div>
+    <div class="selectionThr">
+        <div class="container">
+            <div class="picture">
+                <img src="https://typora-image-mrz.oss-cn-beijing.aliyuncs.com/%E6%9D%BE%E9%BC%A0.png" alt="">
+            </div>
+            <div class="text">
+                <h class="title">The Photo</h>
+                <div class="box">
+                    <p class="para">“Family Farms is the best placewhere I<br />
+                        can buy fruit,vegetable,meat,honey,milk,<br />
+                        eggs and so on for my retaurant directly from<br />
+                        supplier. Super convinient.Thank you”</p>
+                    <div class="order">
+                        <p class="point"><span class="num">①</span> &nbsp Looking for it</p>
+                        <p class="point"><span class="num">②</span> &nbsp Cultivate feelings</p>
+                        <p class="point"><span class="num">③</span> &nbsp Shooting</p>
+                        <p class="point"><span class="num">④</span> &nbsp Harvest achievement</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="footerBox">
+            <p class="text1">IN THE WILD</p>
+            <p class="text2">IN THE SEA</p>
+            <p class="text3">MORE</p>
+            <p class="text4">We create art</p>
+            <p class="text5">We create life</p>
+            <a href="" class="button">Big World</a>
+        </div>
     </div>
 </body>
 
